@@ -124,6 +124,8 @@ define(function TemplateModule() {
 	var RE_REPLACE = /(["\n\t\r])/gm;
 	var RE_CLEAN = /o \+= "";| \+ ""/gm;
 	var EMPTY = "";
+
+
 	var REPLACE = {
 		"\"" : "\\\"",
 		"\n" : "\\n",
@@ -142,6 +144,7 @@ define(function TemplateModule() {
 		var length = 0;
 
 		function blocksTokens(original, prefix, block) {
+      console.log(original, prefix, block);
 			blocks[length] = prefix
 				? "\" +" + block + "+ \""
 				: "\";" + block + "o += \"";
@@ -185,6 +188,7 @@ define(function TemplateModule() {
 				: "borked" ]();
 
 	return {
+    compile:compile,
 		load: function (name, parentRequire, load, config) {
 			var path = parentRequire.toUrl(name);
 
